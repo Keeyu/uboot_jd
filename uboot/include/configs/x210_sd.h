@@ -84,26 +84,26 @@
 //#define DISP_MODE		VGA_1280X1024
 
 /* skip to load BL2 */
-//#define FAST_BOOT		1
+//#define FAST_BOOT				1
 
-#define MEMORY_BASE_ADDRESS	0x30000000
+#define MEMORY_BASE_ADDRESS		0x30000000
 //#define MEMORY_BASE_ADDRESS	0x20000000
 #define MEMORY_BASE_ADDRESS2	0x40000000
 
 /* input clock of PLL */
-#define CONFIG_SYS_CLK_FREQ	24000000	/* the SMDK6400 has 24MHz input clock */
+#define CONFIG_SYS_CLK_FREQ		24000000	/* the SMDK6400 has 24MHz input clock */
 
 #define CONFIG_ENABLE_MMU
 
 #ifdef CONFIG_ENABLE_MMU
-#define virt_to_phys(x)	virt_to_phy_smdkc110(x)
+#define virt_to_phys(x)			virt_to_phy_smdkc110(x)
 #else
-#define virt_to_phys(x)	(x)
+#define virt_to_phys(x)			(x)
 #endif
 
 #define CONFIG_MEMORY_UPPER_CODE
 
-#undef CONFIG_USE_IRQ				/* we don't need IRQ/FIQ stuff */
+#undef CONFIG_USE_IRQ						/* we don't need IRQ/FIQ stuff */
 
 #define CONFIG_INCLUDE_TEST
 
@@ -229,9 +229,9 @@
 #define CONFIG_BOOTP_BOOTPATH
 
 #define CONFIG_BOOTARGS    	"console=ttySAC2,115200 root=/dev/mmcblk0p2 rw init=/linuxrc rootfstype=ext3"
-//#define CONFIG_BOOTARGS    	"console=ttySAC0,115200 root=/dev/mmcblk0p2 rw init=/linuxrc rootfstype=ext3"
+//#define CONFIG_BOOTARGS 	"console=ttySAC0,115200 root=/dev/mmcblk0p2 rw init=/linuxrc rootfstype=ext3"
 #define CONFIG_ETHADDR		00:40:5c:26:0a:5b
-#define CONFIG_NETMASK      	255.255.0.0
+#define CONFIG_NETMASK    	255.255.0.0
 #define CONFIG_IPADDR		192.168.1.88
 #define CONFIG_SERVERIP		192.168.1.102
 #define CONFIG_GATEWAYIP	192.168.0.1
@@ -245,7 +245,7 @@
 #define CONFIG_DRIVER_SMC911X_BASE	0x98800300
 #define CONFIG_DRIVER_SMC911X_16_BIT
 #define CONFIG_DRIVER_CS8900
-#define CS8900_BASE	  		0x18800300
+#define CS8900_BASE	  				0x18800300
 #define CS8900_BUS16
 #else
 #define CONFIG_DRIVER_SMC911X_16_BIT

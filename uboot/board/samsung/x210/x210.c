@@ -237,6 +237,7 @@ extern void mpadfb_init(void);
 int x210_preboot_init(void)
 {
 	mpadfb_init();
+	
 	return 1;
 }
 /**********end************************/

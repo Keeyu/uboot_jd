@@ -127,9 +127,9 @@ int Check_Signature (
 	/* 1. Make HashCode */
 	/* 1-1. SHA1 Init */
 	macro_sscl_memset(SBoot_BaseFunc_ptr,
-			(unsigned char *) &algInfo,
-			0x00,
-			sizeof(SHA1_ALG_INFO));
+					  (unsigned char *) &algInfo,
+					  0x00,
+					  sizeof(SHA1_ALG_INFO));
 
 #if defined(SW_SHA1) 	
 	macro_SEC_SHA1_Init(SBoot_BaseFunc_ptr, &algInfo );
@@ -144,10 +144,10 @@ int Check_Signature (
 #endif
 	/* 2. BL2's signature verification */
 	rv = macro_Verify_PSS_RSASignature(SBoot_BaseFunc_ptr,
-					(unsigned char *)&(sbContext->stage2PubKey),
-					sizeof(RawRSAPublicKey),
-					hashCode, hashCodeLen,
-					signedData, signedDataLen );
+									   (unsigned char *)&(sbContext->stage2PubKey),
+					   				   sizeof(RawRSAPublicKey),
+									   hashCode, hashCodeLen,
+									   signedData, signedDataLen );
 	if ( rv != SB_OK )
 		return rv;
 	

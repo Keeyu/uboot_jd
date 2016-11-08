@@ -78,19 +78,23 @@ mkfs.vfat -F 32 $partition1
 #mount -t vfat $partition1 /media/sd
 
 ####################################
+# Jeffrey uboot_iNand->u-boot
+# for SD card boot
+
+####################################
 #<BL1 fusing>
 bl1_position=1
 uboot_position=49
 
 echo "BL1 fusing"
-./mkbl1 ../uboot_inand.bin SD-bl1-8k.bin 8192
+./mkbl1 ../u-boot.bin SD-bl1-8k.bin 8192
 dd iflag=dsync oflag=dsync if=SD-bl1-8k.bin of=$1 seek=$bl1_position
 rm SD-bl1-8k.bin
 
 ####################################
-#<u-boot fusing>
+#<u-boot fusing> as BL2
 echo "u-boot fusing"
-dd iflag=dsync oflag=dsync if=../uboot_inand.bin of=$1 seek=$uboot_position
+dd iflag=dsync oflag=dsync if=../u-boot.bin of=$1 seek=$uboot_position
 
 ####################################
 #<Message Display>

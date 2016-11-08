@@ -135,20 +135,20 @@ void board_lmb_reserve(struct lmb *lmb) __attribute__((weak, alias("__board_lmb_
 int do_bootm (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
 {
 	image_header_t	*hdr;
-	ulong		addr;
-	ulong		iflag;
-	const char	*type_name;
-	uint		unc_len = CFG_BOOTM_LEN;
-	uint8_t		comp, type, os;
+	ulong			addr;
+	ulong			iflag;
+	const char		*type_name;
+	uint			unc_len = CFG_BOOTM_LEN;
+	uint8_t			comp, type, os;
 
-	void		*os_hdr;
-	ulong		os_data, os_len;
-	ulong		image_start, image_end;
-	ulong		load_start, load_end;
-	ulong		mem_start;
-	phys_size_t	mem_size;
+	void			*os_hdr;
+	ulong			os_data, os_len;
+	ulong			image_start, image_end;
+	ulong			load_start, load_end;
+	ulong			mem_start;
+	phys_size_t		mem_size;
 
-	struct lmb lmb;
+	struct lmb 		lmb;
 
 #if defined(CONFIG_SECURE_BOOT)
 	int rv;
@@ -156,15 +156,15 @@ int do_bootm (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
 
 #if defined(CONFIG_SECURE_BOOT)
 	rv = Check_Signature( (SecureBoot_CTX *)SECURE_BOOT_CONTEXT_ADDR,
-                                (unsigned char*)CONFIG_SECURE_KERNEL_BASE,
-                                CONFIG_SECURE_KERNEL_SIZE-128,
-                                (unsigned char*)(CONFIG_SECURE_KERNEL_BASE+CONFIG_SECURE_KERNEL_SIZE-128),
-                                128 );
-        if(rv != SB_OK) {
-                printf("Kernel Integrity check fail\nSystem Halt....");
-                while(1);
-        }
-        printf("Kernel Integirty check success.\n");
+						  (unsigned char*)CONFIG_SECURE_KERNEL_BASE,
+                      	   CONFIG_SECURE_KERNEL_SIZE-128,
+                          (unsigned char*)(CONFIG_SECURE_KERNEL_BASE+CONFIG_SECURE_KERNEL_SIZE-128),
+                           128 );
+	if(rv != SB_OK) {
+		printf("Kernel Integrity check fail\nSystem Halt....");
+		while(1);
+	}
+	printf("Kernel Integirty check success.\n");
 
 	rv = Check_Signature( (SecureBoot_CTX *)SECURE_BOOT_CONTEXT_ADDR,
                                 (unsigned char*)CONFIG_SECURE_ROOTFS_BASE,
@@ -172,11 +172,11 @@ int do_bootm (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
                                 (unsigned char*)(CONFIG_SECURE_ROOTFS_BASE+CONFIG_SECURE_ROOTFS_SIZE-128),
                                 128 );
 	if(rv != SB_OK) {
-                printf("rootfs Integrity check fail\nSystem Halt....");
-                while(1);
-        }
+		printf("rootfs Integrity check fail\nSystem Halt....");
+		while(1);
+	}
 
-        printf("rootfs Integirty check success.\n");
+	printf("rootfs Integirty check success.\n");
 
 #endif
 	
@@ -245,14 +245,14 @@ int do_bootm (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
 #if defined(CONFIG_FIT)
 	case IMAGE_FORMAT_FIT:
 		if (fit_image_get_type (images.fit_hdr_os,
-					images.fit_noffset_os, &type)) {
+			images.fit_noffset_os, &type)) {
 			puts ("Can't get image type!\n");
 			show_boot_progress (-109);
 			return 1;
 		}
 
 		if (fit_image_get_comp (images.fit_hdr_os,
-					images.fit_noffset_os, &comp)) {
+			images.fit_noffset_os, &comp)) {
 			puts ("Can't get image compression!\n");
 			show_boot_progress (-110);
 			return 1;
@@ -560,18 +560,18 @@ static int fit_check_kernel (const void *fit, int os_noffset, int verify)
  *     address and length, otherwise NULL
  */
 static void *boot_get_kernel (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[],
-		bootm_headers_t *images, ulong *os_data, ulong *os_len)
+	bootm_headers_t *images, ulong *os_data, ulong *os_len)
 {
 	image_header_t	*hdr;
-	ulong		img_addr;
+	ulong			img_addr;
 #if defined(CONFIG_FIT)
-	void		*fit_hdr;
-	const char	*fit_uname_config = NULL;
-	const char	*fit_uname_kernel = NULL;
-	const void	*data;
-	size_t		len;
-	int		cfg_noffset;
-	int		os_noffset;
+	void			*fit_hdr;
+	const char		*fit_uname_config = NULL;
+	const char		*fit_uname_kernel = NULL;
+	const void		*data;
+	size_t			len;
+	int				cfg_noffset;
+	int				os_noffset;
 #endif
 
 	/* find out kernel image address */
@@ -581,11 +581,11 @@ static void *boot_get_kernel (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[]
 				load_addr);
 #if defined(CONFIG_FIT)
 	} else if (fit_parse_conf (argv[1], load_addr, &img_addr,
-							&fit_uname_config)) {
+				&fit_uname_config)) {
 		debug ("*  kernel: config '%s' from image at 0x%08lx\n",
 				fit_uname_config, img_addr);
 	} else if (fit_parse_subimage (argv[1], load_addr, &img_addr,
-							&fit_uname_kernel)) {
+				&fit_uname_kernel)) {
 		debug ("*  kernel: subimage '%s' from image at 0x%08lx\n",
 				fit_uname_kernel, img_addr);
 #endif

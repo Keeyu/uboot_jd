@@ -414,15 +414,15 @@ typedef int (init_fnc_t) (void);
 int print_cpuinfo (void); /* test-only */
 
 init_fnc_t *init_sequence[] = {
-	cpu_init,		/* basic cpu dependent setup */
+	cpu_init,			/* basic cpu dependent setup */
 #if defined(CONFIG_SKIP_RELOCATE_UBOOT)
-	reloc_init,		/* Set the relocation done flag, must
-				   do this AFTER cpu_init(), but as soon
-				   as possible */
+	reloc_init,			/* Set the relocation done flag, must
+				   		do this AFTER cpu_init(), but as soon
+				   		as possible */
 #endif
-	board_init,		/* basic board dependent setup */
+	board_init,			/* basic board dependent setup */
 	interrupt_init,		/* set up exceptions */
-	env_init,		/* initialize environment */
+	env_init,			/* initialize environment */
 	init_baudrate,		/* initialze baudrate settings */
 	serial_init,		/* serial communications setup */
 	console_init_f,		/* stage 1 init of console */
@@ -431,12 +431,12 @@ init_fnc_t *init_sequence[] = {
 	print_cpuinfo,		/* display cpu info (and speed) */
 #endif
 #if defined(CONFIG_DISPLAY_BOARDINFO)
-	checkboard,		/* display board info */
+	checkboard,			/* display board info */
 #endif
 #if defined(CONFIG_HARD_I2C) || defined(CONFIG_SOFT_I2C)
 	init_func_i2c,
 #endif
-	dram_init,		/* configure available RAM banks */
+	dram_init,			/* configure available RAM banks */
 	display_dram_config,
 	NULL,
 };
@@ -488,14 +488,14 @@ void start_armboot (void)
 
 #ifndef CFG_NO_FLASH
 	/* configure available FLASH banks */
-	size = flash_init ();
+	size = flash_init ();	// NorFlash
 	display_flash_config (size);
 #endif /* CFG_NO_FLASH */
 
 #ifdef CONFIG_VFD
-#	ifndef PAGE_SIZE
-#	  define PAGE_SIZE 4096
-#	endif
+#ifndef PAGE_SIZE
+#define PAGE_SIZE 4096
+#endif
 	/*
 	 * reserve memory for VFD display (always full pages)
 	 */
@@ -508,9 +508,9 @@ void start_armboot (void)
 #ifdef CONFIG_LCD
 	/* board init may have inited fb_base */
 	if (!gd->fb_base) {
-#		ifndef PAGE_SIZE
-#		  define PAGE_SIZE 4096
-#		endif
+#ifndef PAGE_SIZE
+#define PAGE_SIZE 4096
+#endif
 		/*
 		 * reserve memory for LCD display (always full pages)
 		 */
@@ -534,6 +534,7 @@ void start_armboot (void)
 //******************************//
 
 #if defined(CONFIG_SMDK6410)
+
 	#if defined(CONFIG_GENERIC_MMC)
 	puts ("SD/MMC:  ");
 	mmc_exist = mmc_initialize(gd->bd);
@@ -605,13 +606,13 @@ void start_armboot (void)
 		{
 			puts ("0 MB\n");
 #ifdef CONFIG_CHECK_X210CV3
-			check_flash_flag=0;//check inand error!
+			check_flash_flag = 0;	// check inand error!
 #endif
 		}
 #ifdef CONFIG_CHECK_X210CV3
 		else
 		{
-			check_flash_flag=1;//check inand ok! 
+			check_flash_flag = 1;	// check inand ok! 
 		}
 #endif
 	#endif
@@ -832,7 +833,7 @@ void start_armboot (void)
 #endif
 
 	/* enable exceptions */
-	enable_interrupts ();
+	enable_interrupts ();	/* uboot not use interrupt, so write void fun avoid err */
 
 	/* Perform network card initialisation if necessary */
 #ifdef CONFIG_DRIVER_TI_EMAC
@@ -863,7 +864,7 @@ extern void dm644x_eth_set_mac_addr (const u_int8_t *addr);
 #endif
 
 #ifdef BOARD_LATE_INIT
-	board_late_init ();
+	board_late_init ();	/* there void */
 #endif
 #if defined(CONFIG_CMD_NET)
 #if defined(CONFIG_NET_MULTI)
@@ -890,7 +891,7 @@ extern void dm644x_eth_set_mac_addr (const u_int8_t *addr);
 
 	/* check menukey to update from sd */
 	extern void update_all(void);
-	if(check_menu_update_from_sd()==0)//update mode
+	if(check_menu_update_from_sd()==0)	// update mode
 	{
 		puts ("[LEFT DOWN] update mode\n");
 		run_command("fdisk -c 0",0);

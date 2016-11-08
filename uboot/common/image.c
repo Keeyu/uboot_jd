@@ -623,7 +623,7 @@ int genimg_get_comp_id (const char *name)
  */
 int genimg_get_format (void *img_addr)
 {
-	ulong		format = IMAGE_FORMAT_INVALID;
+	ulong			format = IMAGE_FORMAT_INVALID;
 	image_header_t	*hdr;
 	printf("get_format\n");
 #if defined(CONFIG_FIT) || defined(CONFIG_OF_LIBFDT)
@@ -765,8 +765,8 @@ int boot_get_ramdisk (int argc, char *argv[], bootm_headers_t *images,
 	const char	*fit_uname_config = NULL;
 	const char	*fit_uname_ramdisk = NULL;
 	ulong		default_addr;
-	int		rd_noffset;
-	int		cfg_noffset;
+	int			rd_noffset;
+	int			cfg_noffset;
 	const void	*data;
 	size_t		size;
 #endif

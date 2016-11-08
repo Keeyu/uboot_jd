@@ -52,14 +52,14 @@
 
 DECLARE_GLOBAL_DATA_PTR;
 
-#if !defined(CFG_ENV_IS_IN_NVRAM)	&& \
-    !defined(CFG_ENV_IS_IN_EEPROM)	&& \
-    !defined(CFG_ENV_IS_IN_FLASH)	&& \
+#if !defined(CFG_ENV_IS_IN_NVRAM)		&& \
+    !defined(CFG_ENV_IS_IN_EEPROM)		&& \
+    !defined(CFG_ENV_IS_IN_FLASH)		&& \
     !defined(CFG_ENV_IS_IN_DATAFLASH)	&& \
-    !defined(CFG_ENV_IS_IN_NAND)	&& \
+    !defined(CFG_ENV_IS_IN_NAND)		&& \
     !defined(CFG_ENV_IS_IN_MOVINAND)	&& \
-    !defined(CFG_ENV_IS_IN_ONENAND)	&& \
-    !defined(CFG_ENV_IS_IN_AUTO)	&& \
+    !defined(CFG_ENV_IS_IN_ONENAND)		&& \
+    !defined(CFG_ENV_IS_IN_AUTO)		&& \
 	!defined(CFG_ENV_IS_IN_SPI_FLASH)	&& \
     !defined(CFG_ENV_IS_NOWHERE)
 # error Define one of CFG_ENV_IS_IN_{NVRAM|EEPROM|FLASH|DATAFLASH|NAND|MOVINAND|ONENAND|NOWHERE|AUTO}

@@ -65,12 +65,12 @@ void do_bootm_linux (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[],
 	ulong	ep = 0;
 	bd_t	*bd = gd->bd;
 	char	*s;
-	int	machid = bd->bi_arch_number;
+	int		machid = bd->bi_arch_number;
 	void	(*theKernel)(int zero, int arch, uint params);
-	int	ret;
+	int		ret;
 
 #ifdef CONFIG_CMDLINE_TAG
-	char *commandline = getenv ("bootargs");
+	char 	*commandline = getenv ("bootargs");
 #endif
 
 	/* find kernel entry point */
@@ -79,7 +79,7 @@ void do_bootm_linux (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[],
 #if defined(CONFIG_FIT)
 	} else if (images->fit_uname_os) {
 		ret = fit_image_get_entry (images->fit_hdr_os,
-					images->fit_noffset_os, &ep);
+								   images->fit_noffset_os, &ep);
 		if (ret) {
 			puts ("Can't get entry point property!\n");
 			goto error;

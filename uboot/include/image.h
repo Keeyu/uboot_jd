@@ -69,45 +69,45 @@
 #define IH_OS_NETBSD		2	/* NetBSD	*/
 #define IH_OS_FREEBSD		3	/* FreeBSD	*/
 #define IH_OS_4_4BSD		4	/* 4.4BSD	*/
-#define IH_OS_LINUX		5	/* Linux	*/
-#define IH_OS_SVR4		6	/* SVR4		*/
-#define IH_OS_ESIX		7	/* Esix		*/
+#define IH_OS_LINUX			5	/* Linux	*/
+#define IH_OS_SVR4			6	/* SVR4		*/
+#define IH_OS_ESIX			7	/* Esix		*/
 #define IH_OS_SOLARIS		8	/* Solaris	*/
-#define IH_OS_IRIX		9	/* Irix		*/
-#define IH_OS_SCO		10	/* SCO		*/
-#define IH_OS_DELL		11	/* Dell		*/
-#define IH_OS_NCR		12	/* NCR		*/
+#define IH_OS_IRIX			9	/* Irix		*/
+#define IH_OS_SCO			10	/* SCO		*/
+#define IH_OS_DELL			11	/* Dell		*/
+#define IH_OS_NCR			12	/* NCR		*/
 #define IH_OS_LYNXOS		13	/* LynxOS	*/
 #define IH_OS_VXWORKS		14	/* VxWorks	*/
-#define IH_OS_PSOS		15	/* pSOS		*/
-#define IH_OS_QNX		16	/* QNX		*/
+#define IH_OS_PSOS			15	/* pSOS		*/
+#define IH_OS_QNX			16	/* QNX		*/
 #define IH_OS_U_BOOT		17	/* Firmware	*/
-#define IH_OS_RTEMS		18	/* RTEMS	*/
-#define IH_OS_ARTOS		19	/* ARTOS	*/
-#define IH_OS_UNITY		20	/* Unity OS	*/
+#define IH_OS_RTEMS			18	/* RTEMS	*/
+#define IH_OS_ARTOS			19	/* ARTOS	*/
+#define IH_OS_UNITY			20	/* Unity OS	*/
 
 /*
  * CPU Architecture Codes (supported by Linux)
  */
 #define IH_ARCH_INVALID		0	/* Invalid CPU	*/
-#define IH_ARCH_ALPHA		1	/* Alpha	*/
-#define IH_ARCH_ARM		2	/* ARM		*/
+#define IH_ARCH_ALPHA		1	/* Alpha		*/
+#define IH_ARCH_ARM			2	/* ARM			*/
 #define IH_ARCH_I386		3	/* Intel x86	*/
-#define IH_ARCH_IA64		4	/* IA64		*/
-#define IH_ARCH_MIPS		5	/* MIPS		*/
+#define IH_ARCH_IA64		4	/* IA64			*/
+#define IH_ARCH_MIPS		5	/* MIPS			*/
 #define IH_ARCH_MIPS64		6	/* MIPS	 64 Bit */
-#define IH_ARCH_PPC		7	/* PowerPC	*/
-#define IH_ARCH_S390		8	/* IBM S390	*/
-#define IH_ARCH_SH		9	/* SuperH	*/
-#define IH_ARCH_SPARC		10	/* Sparc	*/
+#define IH_ARCH_PPC			7	/* PowerPC		*/
+#define IH_ARCH_S390		8	/* IBM S390		*/
+#define IH_ARCH_SH			9	/* SuperH		*/
+#define IH_ARCH_SPARC		10	/* Sparc		*/
 #define IH_ARCH_SPARC64		11	/* Sparc 64 Bit */
-#define IH_ARCH_M68K		12	/* M68K		*/
-#define IH_ARCH_NIOS		13	/* Nios-32	*/
+#define IH_ARCH_M68K		12	/* M68K			*/
+#define IH_ARCH_NIOS		13	/* Nios-32		*/
 #define IH_ARCH_MICROBLAZE	14	/* MicroBlaze   */
-#define IH_ARCH_NIOS2		15	/* Nios-II	*/
-#define IH_ARCH_BLACKFIN	16	/* Blackfin	*/
-#define IH_ARCH_AVR32		17	/* AVR32	*/
-#define IH_ARCH_ST200	        18	/* STMicroelectronics ST200  */
+#define IH_ARCH_NIOS2		15	/* Nios-II		*/
+#define IH_ARCH_BLACKFIN	16	/* Blackfin		*/
+#define IH_ARCH_AVR32		17	/* AVR32		*/
+#define IH_ARCH_ST200	  	18	/* STMicroelectronics ST200  */
 
 /*
  * Image Types
@@ -166,25 +166,25 @@
 #define IH_COMP_BZIP2		2	/* bzip2 Compression Used	*/
 
 #define IH_MAGIC	0x27051956	/* Image Magic Number		*/
-#define IH_NMLEN		32	/* Image Name Length		*/
+#define IH_NMLEN			32	/* Image Name Length		*/
 
 /*
  * Legacy format image header,
  * all data in network byte order (aka natural aka bigendian).
  */
 typedef struct image_header {
-	uint32_t	ih_magic;	/* Image Header Magic Number	*/
-	uint32_t	ih_hcrc;	/* Image Header CRC Checksum	*/
-	uint32_t	ih_time;	/* Image Creation Timestamp	*/
-	uint32_t	ih_size;	/* Image Data Size		*/
-	uint32_t	ih_load;	/* Data	 Load  Address		*/
-	uint32_t	ih_ep;		/* Entry Point Address		*/
-	uint32_t	ih_dcrc;	/* Image Data CRC Checksum	*/
-	uint8_t		ih_os;		/* Operating System		*/
-	uint8_t		ih_arch;	/* CPU architecture		*/
-	uint8_t		ih_type;	/* Image Type			*/
-	uint8_t		ih_comp;	/* Compression Type		*/
-	uint8_t		ih_name[IH_NMLEN];	/* Image Name		*/
+	uint32_t	ih_magic;			/* Image Header Magic Number	*/
+	uint32_t	ih_hcrc;			/* Image Header CRC Checksum	*/
+	uint32_t	ih_time;			/* Image Creation Timestamp		*/
+	uint32_t	ih_size;			/* Image Data Size				*/
+	uint32_t	ih_load;			/* Data	 Load  Address			*/
+	uint32_t	ih_ep;				/* Entry Point Address			*/
+	uint32_t	ih_dcrc;			/* Image Data CRC Checksum		*/
+	uint8_t		ih_os;				/* Operating System				*/
+	uint8_t		ih_arch;			/* CPU architecture				*/
+	uint8_t		ih_type;			/* Image Type					*/
+	uint8_t		ih_comp;			/* Compression Type				*/
+	uint8_t		ih_name[IH_NMLEN];	/* Image Name					*/
 } image_header_t;
 
 /*
@@ -199,28 +199,28 @@ typedef struct bootm_headers {
 	 */
 	image_header_t	*legacy_hdr_os;		/* image header pointer */
 	image_header_t	legacy_hdr_os_copy;	/* header copy */
-	ulong		legacy_hdr_valid;
+	ulong			legacy_hdr_valid;
 
 #if defined(CONFIG_FIT)
 	const char	*fit_uname_cfg;	/* configuration node unit name */
 
 	void		*fit_hdr_os;	/* os FIT image header */
 	const char	*fit_uname_os;	/* os subimage node unit name */
-	int		fit_noffset_os;	/* os subimage node offset */
+	int			fit_noffset_os;	/* os subimage node offset */
 
 	void		*fit_hdr_rd;	/* init ramdisk FIT image header */
 	const char	*fit_uname_rd;	/* init ramdisk subimage node unit name */
-	int		fit_noffset_rd;	/* init ramdisk subimage node offset */
+	int			fit_noffset_rd;	/* init ramdisk subimage node offset */
 
 #if defined(CONFIG_PPC)
 	void		*fit_hdr_fdt;	/* FDT blob FIT image header */
 	const char	*fit_uname_fdt;	/* FDT blob subimage node unit name */
-	int		fit_noffset_fdt;/* FDT blob subimage node offset */
+	int			fit_noffset_fdt;/* FDT blob subimage node offset */
 #endif
 #endif
 
-	int		verify;		/* getenv("verify")[0] != 'n' */
-	struct lmb	*lmb;		/* for memory mgmt */
+	int			verify;			/* getenv("verify")[0] != 'n' */
+	struct lmb	*lmb;			/* for memory mgmt */
 } bootm_headers_t;
 
 /*
@@ -229,19 +229,19 @@ typedef struct bootm_headers {
  * checksum calculations into reasonable chunks.
  */
 #ifndef CHUNKSZ
-#define CHUNKSZ (64 * 1024)
+#define CHUNKSZ 		(64 * 1024)
 #endif
 
 #ifndef CHUNKSZ_CRC32
-#define CHUNKSZ_CRC32 (64 * 1024)
+#define CHUNKSZ_CRC32 	(64 * 1024)
 #endif
 
 #ifndef CHUNKSZ_MD5
-#define CHUNKSZ_MD5 (64 * 1024)
+#define CHUNKSZ_MD5 	(64 * 1024)
 #endif
 
 #ifndef CHUNKSZ_SHA1
-#define CHUNKSZ_SHA1 (64 * 1024)
+#define CHUNKSZ_SHA1 	(64 * 1024)
 #endif
 
 #define uimage_to_cpu(x)		ntohl(x)
@@ -259,8 +259,8 @@ int genimg_get_comp_id (const char *name);
 #ifndef USE_HOSTCC
 /* Image format types, returned by _get_format() routine */
 #define IMAGE_FORMAT_INVALID	0x00
-#define IMAGE_FORMAT_LEGACY	0x01	/* legacy image_header based format */
-#define IMAGE_FORMAT_FIT	0x02	/* new, libfdt based format */
+#define IMAGE_FORMAT_LEGACY		0x01	/* legacy image_header based format */
+#define IMAGE_FORMAT_FIT		0x02	/* new, libfdt based format */
 
 int genimg_get_format (void *img_addr);
 int genimg_has_config (bootm_headers_t *images);

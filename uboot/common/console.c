@@ -492,7 +492,7 @@ int console_init_r (void)
 
 #ifdef CONFIG_SPLASH_SCREEN
 	/* suppress all output if splash screen is enabled and we have
-	   a bmp to display                                            */
+	a bmp to display                                            */
 	if (getenv("splashimage") != NULL)
 		gd->flags |= GD_FLG_SILENT;
 #endif

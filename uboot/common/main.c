@@ -299,7 +299,7 @@ void main_loop (void)
 
 	#ifdef CONFIG_MODEM_SUPPORT
 	if (do_mdm_init)
-		bmp = 1;	/* alternate bitmap */
+		bmp = 1;		/* alternate bitmap */
 	#endif
 	trab_vfd (bmp);
 #endif	/* CONFIG_VFD && VFD_TEST_LOGO */
@@ -356,7 +356,7 @@ void main_loop (void)
 		run_command (p, 0);
 	#else
 		parse_string_outer(p, FLAG_PARSE_SEMICOLON |
-				    FLAG_EXIT_FROM_LOOP);
+				   		   FLAG_EXIT_FROM_LOOP);
 	#endif
 
 	#ifdef CONFIG_AUTOBOOT_KEYED
@@ -1260,7 +1260,7 @@ static void process_macros (const char *input, char *output)
 
 #ifdef DEBUG_PARSER
 	printf ("[PROCESS_MACROS] OUTPUT len %d: \"%s\"\n",
-		strlen (output_start), output_start);
+	strlen (output_start), output_start);
 #endif
 }
 
