@@ -1285,8 +1285,8 @@ int run_command (const char *cmd, int flag)
 {
 	cmd_tbl_t *cmdtp;
 	char cmdbuf[CFG_CBSIZE];	/* working copy of cmd		*/
-	char *token;			/* start of token in cmdbuf	*/
-	char *sep;			/* end of token (separator) in cmdbuf */
+	char *token;				/* start of token in cmdbuf	*/
+	char *sep;					/* end of token (separator) in cmdbuf */
 	char finaltoken[CFG_CBSIZE];
 	char *str = cmdbuf;
 	char *argv[CFG_MAXARGS + 1];	/* NULL terminated	*/

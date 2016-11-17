@@ -84,7 +84,7 @@ uchar default_environment[] = {
 	"bootdelay="	MK_STR(CONFIG_BOOTDELAY)	"\0"
 #endif
 #if defined(CONFIG_BAUDRATE) && (CONFIG_BAUDRATE >= 0)
-	"baudrate="	MK_STR(CONFIG_BAUDRATE)		"\0"
+	"baudrate="		MK_STR(CONFIG_BAUDRATE)		"\0"
 #endif
 #ifdef	CONFIG_LOADS_ECHO
 	"loads_echo="	MK_STR(CONFIG_LOADS_ECHO)	"\0"
@@ -185,7 +185,7 @@ uchar env_get_char_memory (int index)
 uchar env_get_char_memory (int index)
 {
 	if (gd->env_valid) {
-		return ( *((uchar *)(gd->env_addr + index)) );
+		return ( *((uchar *)(gd->env_addr + index)));
 	} else {
 		return ( default_environment[index] );
 	}
